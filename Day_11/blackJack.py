@@ -1,4 +1,4 @@
-#39. Build a program that simulates a basic text-based blackjack game against the computer.
+# Build a program that simulates a basic text-based blackjack game against the computer.
 
 import random
 
@@ -38,12 +38,22 @@ def blackjack_game():
     deck = create_deck()
     player_hand = [deck.pop(), deck.pop()]
     dealer_hand = [deck.pop(), deck.pop()]
+    
+    
+
 
     print("Welcome to Blackjack!")
 
     display_hand(player_hand)
     display_hand(dealer_hand, hide_first_card=True)
-
+    player_score = calculate_hand_value(player_hand)
+    dealer_score = calculate_hand_value(dealer_hand)
+    if player_score == 21:
+        print("Blackjack,you Win")
+    elif dealer_score ==21:
+        print("Dealer has Blacjack,you lose")
+        
+        
     while True:
         action = input("Do you want to (h)it or (s)tand? ")
         if action.lower() == 'h':
@@ -55,6 +65,7 @@ def blackjack_game():
                 return
         elif action.lower() == 's':
             break
+    
 
     print("\nDealer's turn")
     display_hand(dealer_hand)
