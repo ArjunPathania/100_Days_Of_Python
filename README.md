@@ -17,14 +17,11 @@ I'm committed to coding every day for 100 days, creating meaningful projects and
 
 ## 📁 Folder Structure
 
-The repository will be organized into different sections:
+The repository is organized into folders for each day of the challenge. Each folder is named according to the format `Day_[day]` (e.g., `Day_1`, `Day_2`, etc.), and it contains:
 
-- `Day_1_to_Day_10`: Basic Python scripts, solving coding challenges, and exploring beginner-level topics.
-- `Day_11_to_Day_20`: Intermediate projects, deeper into Python libraries, and more complex problems.
-- `Day_21_to_Day_30`: Data Science basics, working with libraries like Pandas, Numpy, and Matplotlib.
-- `Day_31_to_Day_50`: Machine Learning models, exploring Scikit-learn, TensorFlow, and similar tools.
-- `Day_51_to_Day_70`: Building full-fledged projects, integrating APIs, automation.
-- `Day_71_to_Day_100`: Advanced Python topics, AI, Data Science projects, and real-world applications.
+- The project or script of the day.
+- A `README.md` file (if necessary) explaining the task or project.
+- Any resources or references used.
 
 ## 🔧 Tools & Technologies
 
