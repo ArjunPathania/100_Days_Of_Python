@@ -1,60 +1,32 @@
-import random
-import hangman_words
-import hangman_art
+from curses.ascii import isalpha
 
-lives = 6
-word_list = hangman_words.word_list
-logo = hangman_art.logo
-print(logo)
+import art
 
-chosen_word = random.choice(word_list)
-
-placeholder = ""
-word_length = len(chosen_word)
-for position in range(word_length):
-    placeholder += "_"
-print("Word to guess: " + placeholder)
-
-game_over = False
-correct_letters = []
-
-while not game_over:
-
-    print(f"****************************{lives}/6 LIVES LEFT****************************")
-    guess = input("Guess a letter: ").lower()
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 
-    display = ""
-
-    if guess in correct_letters:
-        print(f"You have already guessed {guess}")
-
-    for letter in chosen_word:
-        if letter == guess:
-            display += letter
-            correct_letters.append(guess)
-        elif letter in correct_letters:
-            display += letter
+def caesar(original_text, shift_amount, encode_or_decode):
+    output_text = ""
+    if encode_or_decode == "decode":
+        shift_amount *= -1
+    for letter in original_text:
+        if isalpha(letter):
+            shifted_position = alphabet.index(letter.lower()) + shift_amount
+            shifted_position %= len(alphabet)
+            output_text += alphabet[shifted_position]
         else:
-            display += "_"
+            output_text += letter
+    print(f"Here is the {encode_or_decode}ed result: {output_text}")
 
-    print("Word to guess: " + display)
+
+print(art.logo)
+users_choice = "yes"
+while users_choice.lower() =="yes":
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+    caesar(original_text=text, shift_amount=shift, encode_or_decode=direction)
+    users_choice =input("Type 'yes' if you want to go again. Otherwise, type 'no'.")
 
 
-    if guess not in chosen_word:
-        print(f"You guessed {guess}, that's not int he word. You loose a life.")
 
-    if guess not in chosen_word:
-        lives -= 1
-
-        if lives == 0:
-            game_over = True
-
-            print(f"***********************YOU LOSE**********************\nThe correct word was {chosen_word}")
-
-    if "_" not in display:
-        game_over = True
-        print("****************************YOU WIN****************************")
-
-    stages = hangman_art.stages
-    print(stages[lives])
