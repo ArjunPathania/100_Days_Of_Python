@@ -52,7 +52,7 @@ def make_coffee(drink_name, drink):
         resources['milk'] -= drink['ingredients'].get('milk', 0)
     return f"Here is your {drink_name}. Enjoy!"
 
-def process_coins(drink):
+def process_payment(drink):
     """Handles payment and checks if enough money has been inserted."""
     quarters = int(input("How many quarters?: "))
     dimes = int(input("How many dimes?: "))
@@ -112,7 +112,7 @@ def coffee_machine():
 
         resource_check = check_resources_sufficient(drink)
         if resource_check == "":
-            if process_coins(drink):
+            if process_payment(drink):
                 print(make_coffee(customer_order, drink))
         else:
             print(resource_check)
