@@ -12,7 +12,7 @@ for question in question_data:
 quiz = QuizBrain(question_bank)
 
 # Running the quiz
-while quiz.still_has_questions():
+while QuizBrain.still_has_questions(quiz):
     quiz.next_question()
 
 # End of quiz
