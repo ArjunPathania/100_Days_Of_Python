@@ -2,7 +2,6 @@ import random
 from turtle import Turtle, Screen
 import colorgram
 
-
 def random_color():
     """Generates a random RGB color."""
     return random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
@@ -14,6 +13,17 @@ class ShapeDrawer:
         self.screen = Screen()
         self.screen.colormode(255)
         self.damien_hirst_palette = None
+        self.screen.setup(width=800, height=600)  # Set up the screen size
+        self.min_x = -self.screen.window_width() // 2
+        self.max_x = self.screen.window_width() // 2
+        self.min_y = -self.screen.window_height() // 2
+        self.max_y = self.screen.window_height() // 2
+
+    def check_boundary(self):
+        """Checks if the turtle is near the screen boundary and makes it bounce back."""
+        x, y = self.turtle.xcor(), self.turtle.ycor()
+        if x < self.min_x or x > self.max_x or y < self.min_y or y > self.max_y:
+            self.turtle.setheading(self.turtle.heading() + 180)  # Turn around
 
     def draw_square(self, size):
         """Draws a square of a given size."""
@@ -47,6 +57,27 @@ class ShapeDrawer:
             self.turtle.color(random_color())
             self.turtle.setheading(random.choice(angles))
             self.turtle.forward(50)
+            self.check_boundary()  # Check boundary after every move
+
+    def drunk_walk(self, steps):
+        """Turtle takes a random walk with random angles."""
+        self.turtle.pensize(10)
+
+        for _ in range(steps):
+            self.turtle.color(random_color())
+            self.turtle.setheading(random.randint(0, 355))
+            self.turtle.forward(10)
+            self.check_boundary()  # Check boundary after every move
+
+    def leap_of_faith(self, steps):
+        """Turtle takes larger random steps."""
+        self.turtle.pensize(10)
+
+        for _ in range(steps):
+            self.turtle.color(random_color())
+            self.turtle.setheading(random.randint(0, 355))
+            self.turtle.forward(20)
+            self.check_boundary()  # Check boundary after every move
 
     def spirograph(self, circles, radius):
         """Draws a spirograph pattern."""
@@ -90,6 +121,7 @@ class ShapeDrawer:
         self.screen.update()  # Re-enable screen updates after drawing is done
 
 
+# Set up the turtle and screen
 timmy = Turtle(shape="turtle")
 timmy.speed("fastest")
 screen = Screen()
@@ -97,13 +129,22 @@ screen = Screen()
 shape_drawer = ShapeDrawer(timmy)
 
 # Uncomment below to test various functionalities
+
 # shape_drawer.draw_dotted_line(15)
 # shape_drawer.draw_square(100)
+
 # for sides in range(3, 11):
 #     shape_drawer.draw_shape(sides)
+
 # shape_drawer.random_walk(1000)
+
 # shape_drawer.spirograph(36, 200)
 
-shape_drawer.draw_damien_hirst_pattern(size=25, dot_size=15, spacing=25)
+# shape_drawer.draw_damien_hirst_pattern(size=25, dot_size=15, spacing=25)
+
+# shape_drawer.drunk_walk(1000)
+
+shape_drawer.leap_of_faith(1000)
+
 
 screen.exitonclick()
