@@ -40,13 +40,16 @@ class ShapeDrawer:
             self.turtle.forward(10)
             self.turtle.pendown()
 
-    def draw_shape(self, sides, length=100):
+    def draw_shape(self, no_of_sides, length=100):
         """Draws a polygon with a given number of sides."""
-        self.turtle.color(random_color())
-        angle = 360 / sides
-        for _ in range(sides):
+        start_x, start_y = -80, -100
+        self.turtle.teleport(start_x, start_y)
+        self.turtle.pensize(2)
+        angle = 360 / no_of_sides
+        for _ in range(no_of_sides):
+            self.turtle.color(random_color())
             self.turtle.forward(length)
-            self.turtle.right(angle)
+            self.turtle.left(angle)
 
     def random_walk(self, steps):
         """Turtle takes a random walk with specified steps."""
@@ -59,25 +62,25 @@ class ShapeDrawer:
             self.turtle.forward(50)
             self.check_boundary()  # Check boundary after every move
 
-    def drunk_walk(self, steps):
-        """Turtle takes a random walk with random angles."""
-        self.turtle.pensize(10)
+    # def drunk_walk(self, steps):
+    #     """Turtle takes a random walk with random angles."""
+    #     self.turtle.pensize(10)
+    #
+    #     for _ in range(steps):
+    #         self.turtle.color(random_color())
+    #         self.turtle.setheading(random.randint(0, 355))
+    #         self.turtle.forward(10)
+    #         self.check_boundary()  # Check boundary after every move
 
-        for _ in range(steps):
-            self.turtle.color(random_color())
-            self.turtle.setheading(random.randint(0, 355))
-            self.turtle.forward(10)
-            self.check_boundary()  # Check boundary after every move
-
-    def leap_of_faith(self, steps):
-        """Turtle takes larger random steps."""
-        self.turtle.pensize(10)
-
-        for _ in range(steps):
-            self.turtle.color(random_color())
-            self.turtle.setheading(random.randint(0, 355))
-            self.turtle.forward(20)
-            self.check_boundary()  # Check boundary after every move
+    # def leap_of_faith(self, steps):
+    #     """Turtle takes larger random steps."""
+    #     self.turtle.pensize(10)
+    #
+    #     for _ in range(steps):
+    #         self.turtle.color(random_color())
+    #         self.turtle.setheading(random.randint(0, 355))
+    #         self.turtle.forward(200)
+    #         self.check_boundary()  # Check boundary after every move
 
     def spirograph(self, circles, radius):
         """Draws a spirograph pattern."""
@@ -100,13 +103,12 @@ class ShapeDrawer:
         rgb_colors = [color.rgb for color in self.damien_hirst_palette]
 
         self.turtle.hideturtle()
-        self.turtle.penup()
         self.turtle.speed("fastest")
 
         self.screen.tracer(0)  # Disable screen updates for faster drawing
 
         start_x, start_y = -300, -250
-        self.turtle.goto(start_x, start_y)
+        self.turtle.teleport(start_x, start_y)
 
         for row in range(size):
             for col in range(size):
@@ -133,8 +135,8 @@ shape_drawer = ShapeDrawer(timmy)
 # shape_drawer.draw_dotted_line(15)
 # shape_drawer.draw_square(100)
 
-# for sides in range(3, 11):
-#     shape_drawer.draw_shape(sides)
+for sides in range(3, 11):
+    shape_drawer.draw_shape(sides)
 
 # shape_drawer.random_walk(1000)
 
@@ -144,7 +146,7 @@ shape_drawer = ShapeDrawer(timmy)
 
 # shape_drawer.drunk_walk(1000)
 
-shape_drawer.leap_of_faith(1000)
+# shape_drawer.leap_of_faith(2000)
 
 
 screen.exitonclick()
