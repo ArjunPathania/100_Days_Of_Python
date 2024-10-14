@@ -55,7 +55,6 @@ class ShapeDrawer:
         """Turtle takes a random walk with specified steps."""
         angles = [0, 90, 180, 270]
         self.turtle.pensize(10)
-
         for _ in range(steps):
             self.turtle.color(random_color())
             self.turtle.setheading(random.choice(angles))
@@ -89,7 +88,7 @@ class ShapeDrawer:
             self.turtle.pensize(2)
             self.turtle.color(random_color())
             self.turtle.circle(radius)
-            self.turtle.right(phase_change)
+            self.turtle.left(phase_change)
 
     def draw_damien_hirst_pattern(self, size, dot_size=15, spacing=30):
         """Draws a dot pattern inspired by Damien Hirst."""
@@ -135,12 +134,12 @@ shape_drawer = ShapeDrawer(timmy)
 # shape_drawer.draw_dotted_line(15)
 # shape_drawer.draw_square(100)
 
-for sides in range(3, 11):
-    shape_drawer.draw_shape(sides)
+# for sides in range(3, 11):
+#     shape_drawer.draw_shape(sides)
 
 # shape_drawer.random_walk(1000)
 
-# shape_drawer.spirograph(36, 200)
+shape_drawer.spirograph(36, 200)
 
 # shape_drawer.draw_damien_hirst_pattern(size=25, dot_size=15, spacing=25)
 
