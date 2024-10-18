@@ -102,8 +102,8 @@ class ShapeDrawer:
         rgb_colors = [color.rgb for color in self.damien_hirst_palette]
 
         self.turtle.hideturtle()
-        self.turtle.speed("fastest")
-
+        self.turtle.speed("slowest")
+        self.turtle.penup()
         self.screen.tracer(0)  # Disable screen updates for faster drawing
 
         start_x, start_y = -300, -250
@@ -117,7 +117,7 @@ class ShapeDrawer:
                 self.turtle.forward(spacing)
 
             # Move to the next row
-            self.turtle.goto(start_x, start_y + (row + 1) * spacing)
+            self.turtle.teleport(start_x, start_y + (row + 1) * spacing)
 
         self.screen.update()  # Re-enable screen updates after drawing is done
 
@@ -139,9 +139,9 @@ shape_drawer = ShapeDrawer(timmy)
 
 # shape_drawer.random_walk(1000)
 
-shape_drawer.spirograph(36, 200)
+# shape_drawer.spirograph(36, 200)
 
-# shape_drawer.draw_damien_hirst_pattern(size=25, dot_size=15, spacing=25)
+shape_drawer.draw_damien_hirst_pattern(size=25, dot_size=15, spacing=25)
 
 # shape_drawer.drunk_walk(1000)
 
