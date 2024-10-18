@@ -34,6 +34,6 @@ while is_game_on:
             score = ScoreBoard()
             continue
         else:
-            is_game_on = True
+            is_game_on = False
 
 game_screen.screen.mainloop()

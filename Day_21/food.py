@@ -7,6 +7,10 @@ class Food(Turtle):
         self.shape("circle")
         self.color("blue")
         self.penup()
+        x_position = randint(-280, 280)
+        y_position = randint(-280, 280)
+        self.position = (x_position, y_position)
+        self.goto(self.position)
         self.shapesize(stretch_len=0.5, stretch_wid=0.5)
         self.speed("fastest")
 
