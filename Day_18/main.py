@@ -114,13 +114,13 @@ class ShapeDrawer:
                 rgb = random.choice(rgb_colors)
                 self.turtle.color(rgb)
                 self.turtle.dot(dot_size)
+                self.screen.update()
                 self.turtle.forward(spacing)
 
             # Move to the next row
             self.turtle.teleport(start_x, start_y + (row + 1) * spacing)
 
-        self.screen.update()  # Re-enable screen updates after drawing is done
-
+        self.screen.update()
 
 # Set up the turtle and screen
 timmy = Turtle(shape="turtle")

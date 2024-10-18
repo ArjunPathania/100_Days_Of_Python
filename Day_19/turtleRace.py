@@ -20,22 +20,22 @@ class Race:
         y_positions = [70, 40, 10, -20, -50, -80]  # Y-positions for the six turtles
 
         # Initialize each contestant and place them at their starting positions
-        for i in range(len(COLORS)):
+        for i in range(len(y_positions)):
             contestant = Contestant(color=COLORS[i], start_x=start_x, start_y=y_positions[i])
             self.contestants.append(contestant)
 
     # Method to run the race
     def start_race(self):
-        race_is_on = True
-        while race_is_on:
+        while True:
             for contestant in self.contestants:
+                contestant.turtle.speed(randint(1, 10))
                 # Move each turtle forward a random distance (1-10 units)
                 contestant.turtle.fd(randint(1, 10))
                 # Check if any turtle has reached the finish line (x = 220)
                 if contestant.turtle.xcor() >= 220:
-                    race_is_on = False  # Stop the race
-                    return contestant.turtle.color()[0]  # Return the winner's color
-
+                    return contestant.turtle.pencolor()  # Return the winner's color
+                    # return contestant.turtle.color()[0]  # Return the winner's color
+                #color() - returns the current pencolor and the current fillcolor as a pair of color specification strings as are returned by pencolor and fillcolor.
 # Set up the screen
 screen = Screen()
 screen.setup(width=500, height=400)
