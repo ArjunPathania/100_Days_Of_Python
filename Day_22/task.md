@@ -1,5 +1,3 @@
-Here's the updated `task.md` file that includes information about how the ball's movement was changed and how the edge of the paddle was detected.
-
 ### Updated task.md
 ```markdown
 # Pong Game Development Tasks
