@@ -30,8 +30,8 @@ class Ball(Turtle):
         Detects collision with paddles. If the ball collides with a paddle on the right or left side,
         it reverses the X-axis direction and increases speed.
         """
-        is_near_right_paddle = self.distance(paddle) < 50 and self.xcor() > 320
-        is_near_left_paddle = self.distance(paddle) < 50 and self.xcor() < -320
+        is_near_right_paddle = self.distance(paddle) < 50 and int(self.xcor()) > 320
+        is_near_left_paddle = int(self.distance(paddle)) < 50 and self.xcor() < -320
 
         if is_near_right_paddle or is_near_left_paddle:
             self.reverse_x_direction()
