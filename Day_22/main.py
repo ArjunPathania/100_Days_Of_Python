@@ -49,7 +49,7 @@ def game_loop(screen, l_paddle, r_paddle, ball, l_scoreboard, r_scoreboard):
         if play_again == 'n':
             is_game_on = False
         elif play_again == 'y':
-
+            screen.screen.reset()
             screen, l_paddle, r_paddle, ball, l_scoreboard, r_scoreboard = setup_game()
 
     screen.screen.exitonclick()

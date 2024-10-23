@@ -1,5 +1,4 @@
 from turtle import Screen #,Turtle
-
 # def draw_middle_line():
 #     """Draw a dashed line in the middle of the screen."""
 #     line_turtle = Turtle()
@@ -16,8 +15,6 @@ from turtle import Screen #,Turtle
 #         line_turtle.forward(10)
 #         line_turtle.penup()
 #         line_turtle.forward(10)
-
-
 class GameScreen:
     def __init__(self):
         """Initialize the game screen with title, dimensions, and background color."""
