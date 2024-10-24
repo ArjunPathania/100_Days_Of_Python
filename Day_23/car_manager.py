@@ -14,8 +14,13 @@ class Car(Turtle):
         self.shapesize(stretch_wid=1, stretch_len=2)
         self.ht()
 
-    def move(self):
-            self.bk(STARTING_MOVE_DISTANCE)
+    def move(self,level):
+        self.bk(STARTING_MOVE_DISTANCE + (level*MOVE_INCREMENT))
+
+    def infinite_loop(self):
+        if self.xcor()<-300:
+            self.goto(x=300,y=self.ycor())
+
 
 
 class CarManager:
@@ -24,7 +29,7 @@ class CarManager:
         self.cars = []
         self.generate_cars()
     def generate_cars(self):
-        for i in range(100):
+        for i in range(20):
             self.cars.append(Car())
 
 

@@ -21,6 +21,6 @@ class Player(Turtle):
             return True
 
     def detect_collision_with_car(self,car):
-        if self.distance(car)<30:
+        if self.distance(car)<23 and (-280 < self.ycor() < 280):
             return True
 
