@@ -9,6 +9,11 @@ class Food(Turtle):
         self.penup()
         self.shapesize(stretch_len=0.5, stretch_wid=0.5)
         self.speed("fastest")
+        x_position = randint(-280, 280)
+        y_position = randint(-280, 280)
+        self.position = (x_position, y_position)
+        self.goto(self.position)
+
 
     def generate_food(self):
         x_position = randint(-280, 280)
