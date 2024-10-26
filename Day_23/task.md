@@ -69,5 +69,4 @@ Consider adding:
 
 ## Authors
 - **Arjun Pathania** - [GitHub](https://github.com/ArjunPathania/100_Days_Of_Python)
-- 
 ---
