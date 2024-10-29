@@ -77,7 +77,6 @@ game.screen.mainloop()
 # img = "blank_states_img.gif"
 # screen.addshape(img)
 # state_map = Turtle(shape=img)
-# state_list = []
 #
 # def generate_states(name, coordinates):
 #     state = Turtle()
@@ -85,7 +84,6 @@ game.screen.mainloop()
 #     state.goto(coordinates)
 #     state.hideturtle()
 #     state.write(arg=name, move=False, align="center", font=("Arial", 8, "normal"))
-#     state_list.append(state)
 #
 # state_data = pd.read_csv("50_states.csv")
 #
@@ -112,5 +110,5 @@ game.screen.mainloop()
 #         screen.textinput(title="Oops!", prompt="That's not a valid state. Try again.")  # Prompt for invalid state
 #
 # screen.mainloop()
-
+#
 # print(guess_list)
