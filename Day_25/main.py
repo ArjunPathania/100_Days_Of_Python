@@ -1,6 +1,7 @@
 from turtle import Turtle, Screen
 import pandas as pd
 
+#rewritten using OOP approach
 
 class State:
     def __init__(self, name, x, y):
@@ -70,3 +71,46 @@ class StateGame:
 game = StateGame()
 game.start_game()
 game.screen.mainloop()
+
+# screen = Screen()
+# screen.title("U.S. States Game")
+# img = "blank_states_img.gif"
+# screen.addshape(img)
+# state_map = Turtle(shape=img)
+# state_list = []
+#
+# def generate_states(name, coordinates):
+#     state = Turtle()
+#     state.penup()
+#     state.goto(coordinates)
+#     state.hideturtle()
+#     state.write(arg=name, move=False, align="center", font=("Arial", 8, "normal"))
+#     state_list.append(state)
+#
+# state_data = pd.read_csv("50_states.csv")
+#
+# guess_list = []
+#
+# guessed_states = 0
+# while guessed_states < 50:
+#     answer_state = screen.textinput(title="Guess State", prompt="What's another state?Type 'exit' to quit ").title()
+#     if answer_state == "Exit":
+#         screen.textinput(title="Final Score", prompt=f"{guessed_states}/50")
+#         break
+#     if answer_state in guess_list:
+#         screen.textinput(title="Guess State", prompt="Already guessed")
+#     if answer_state in state_data.state.values:
+#         # Get the corresponding state name and coordinates
+#         state_name = answer_state
+#         name_of_state = state_data.loc[state_data.state == state_name,'state'].values[0]
+#         guess_list.append(name_of_state)
+#         x_cor = state_data.loc[state_data.state == state_name, 'x'].values[0]
+#         y_cor = state_data.loc[state_data.state == state_name, 'y'].values[0]
+#         generate_states(state_name, (x_cor, y_cor))
+#         guessed_states += 1  # Increment guessed states
+#     else:
+#         screen.textinput(title="Oops!", prompt="That's not a valid state. Try again.")  # Prompt for invalid state
+#
+# screen.mainloop()
+
+# print(guess_list)
