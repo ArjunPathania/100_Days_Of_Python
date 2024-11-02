@@ -47,21 +47,30 @@ def start_timer():
     # Check if Pomodoro session is complete after 4 cycles
     if reps > TOTAL_CYCLES * 2:
         indicator.config(text="Session Complete!", bg=YELLOW, fg=GREEN)
+        window.config(bg=YELLOW)
+        canvas.config(bg=YELLOW)
+        check_mark.config(bg=YELLOW)
         reset_timer()
         return
 
     # Configure for work session
     if reps % 2 == 1:
         indicator.config(text="Work", bg=YELLOW, fg=GREEN)
+        window.config(bg=YELLOW)
+        canvas.config(bg=YELLOW)
+        check_mark.config(bg=YELLOW)
         countdown(WORK_MIN * 60)
 
     # Configure for break session
     elif reps % 2 == 0:
+        window.config(bg=PINK)
+        canvas.config(bg=PINK)
+        check_mark.config(bg=PINK)
+        indicator.config(text="Break", fg=RED, bg=PINK)
         if reps == TOTAL_CYCLES * 2:
             # Last cycle uses long break
             countdown(LONG_BREAK_MIN * 60)
         else:
-            indicator.config(text="Break", fg=RED, bg=PINK)
             countdown(SHORT_BREAK_MIN * 60)
 
         # Update check marks to show completed work sessions
@@ -101,7 +110,7 @@ indicator.grid(column=2, row=1)
 canvas = Canvas(width=220, height=224, bg=YELLOW, highlightthickness=0)
 tomato_img = PhotoImage(file="tomato.png")
 canvas.create_image(110, 112, image=tomato_img)
-timer_text = canvas.create_text(110, 130, text="00:00", font=(FONT_NAME, 35, "bold"))
+timer_text = canvas.create_text(110, 130, text="00:00",fill="white" ,font=(FONT_NAME, 35, "bold"))
 canvas.grid(column=2, row=2)
 
 # Start button to initiate timer
