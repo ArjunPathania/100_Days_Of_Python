@@ -6,7 +6,7 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 5  # Duration of work session in minutes
+WORK_MIN = 25  # Duration of work session in minutes
 SHORT_BREAK_MIN = 5  # Duration of short break in minutes
 LONG_BREAK_MIN = 20  # Duration of long break in minutes
 TOTAL_CYCLES = 4  # Total cycles for a complete Pomodoro session
@@ -17,20 +17,31 @@ timer = None  # Timer reference for cancellation
 # ---------------------------- TIMER RESET ------------------------------- #
 def reset_timer():
     """Resets the timer, clears the check marks, and resets UI to initial state."""
-    global reps
+    global reps, timer
     reps = 0
-    window.after_cancel(timer)
+    # Cancel any active timer
+    if timer:
+        window.after_cancel(timer)
+        timer = None
+    # Reset timer display and indicators
     canvas.itemconfig(timer_text, text="00:00")
     indicator.config(text="Timer", bg=YELLOW, fg=GREEN)
     window.config(bg=YELLOW)
     canvas.config(bg=YELLOW)
     check_mark.config(text="")
+    # Re-enable start button
+    start_button.config(state="normal")
 
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 def start_timer():
     """Starts the timer and alternates between work and break sessions up to the total cycles limit."""
-    global reps
+    global reps, timer
+
+    # Prevent multiple concurrent timers by disabling start button
+    start_button.config(state="disabled")
+
+    # Increment cycle count
     reps += 1
 
     # Check if Pomodoro session is complete after 4 cycles
