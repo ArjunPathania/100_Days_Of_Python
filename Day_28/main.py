@@ -36,7 +36,7 @@ def reset_timer():
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 def start_timer():
     """Starts the timer and alternates between work and break sessions up to the total cycles limit."""
-    global reps, timer
+    global reps
 
     # Prevent multiple concurrent timers by disabling start button
     start_button.config(state="disabled")
