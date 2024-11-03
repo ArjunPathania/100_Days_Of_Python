@@ -3,9 +3,30 @@ import random as rand
 from tkinter import messagebox
 import string
 import pyperclip
-# ---------------------------- CONSTANTS ------------------------------- #
 
+# ---------------------------- CONSTANTS ------------------------------- #
 FONT_NAME = "Courier"
+
+# ---------------------------- VALIDATE PASSWORD ------------------------------- #
+def validation(password):
+    symbols = "!@#$%^&*()"
+    numbers = string.digits
+    symbol_no, no_no = 0, 0
+
+    if len(password) < 8:
+        messagebox.showerror(title="Weak Password", message="Password is too short. It must be at least 8 characters.")
+        return False
+    else:
+        for i in password:
+            if i in symbols:
+                symbol_no += 1
+            if i in numbers:
+                no_no += 1
+        if no_no < 2 or symbol_no < 2:
+            messagebox.showerror(title="Weak Password", message="Password must include at least 2 symbols and 2 numbers.")
+            return False
+
+    return True
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def password_generator():
@@ -37,65 +58,67 @@ def password_generator():
     pyperclip.copy(password)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
-
 def save_password():
-    validation_check = True
     website_name = website_entry.get()
     username = user_name_entry.get()
     password = password_entry.get()
-    if len(website_name) ==0 or len(username)==0 or len(password)==0:
-        validation_check =False
-    if not validation_check:
-        messagebox.showerror(title="Warning",message="Please make sure you haven't left any fields empty.")
-    else:
-        user_action = messagebox.askokcancel(title=website_name,message=f"Website: {website_name}\nEmail/Username:{username}\nPassword:{password}\nDo you want to save or cancel?")
-        if user_action and validation_check:
-            with open("saved_passwords.txt", mode="a") as password_file:
-                password_file.write(f"{website_name} | {username} | {password}\n")
+
+    # Check for empty fields
+    if len(website_name) == 0 or len(username) == 0 or len(password) == 0:
+        messagebox.showerror(title="Warning", message="Please make sure you haven't left any fields empty.")
+        return
+
+    # Validate password strength
+    if not validation(password):
+        return  # Exit if the password is weak
+
+    # Confirm and save
+    user_action = messagebox.askokcancel(title=website_name, message=f"Website: {website_name}\nEmail/Username: {username}\nPassword: {password}\nDo you want to save or cancel?")
+    if user_action:
+        with open("saved_passwords.txt", mode="a") as password_file:
+            password_file.write(f"{website_name} | {username} | {password}\n")
+            messagebox.showinfo(title="Success", message="Password saved successfully!")
 
 # ---------------------------- UI SETUP ------------------------------- #
-
-#Main Window
 root = Tk()
 root.title("Password Manager")
-root.config(padx=20,pady=20)
+root.config(padx=20, pady=20)
 
-
-#add logo
-canvas = Canvas(width=200,height=220,highlightthickness=0)
+# Add logo
+canvas = Canvas(width=200, height=220, highlightthickness=0)
 password_logo = PhotoImage(file="logo.png")
-canvas.create_image(100,110,image=password_logo)
-canvas.grid(column=2,row=0)
+canvas.create_image(100, 110, image=password_logo)
+canvas.grid(column=2, row=0)
 
-#Website label
-Label(text="Website:",font=(FONT_NAME,12)).grid(column=1,row=1)
+# Website label
+Label(text="Website:", font=(FONT_NAME, 12)).grid(column=1, row=1)
 
 # Website Entry
 website_entry = Entry(width=46)
-website_entry.grid(column=2,row=1,columnspan=2)
+website_entry.grid(column=2, row=1, columnspan=2)
 
-#Email/Username label
-Label(text="Email/Username:",font=(FONT_NAME,12)).grid(column=1,row=2)
+# Email/Username label
+Label(text="Email/Username:", font=(FONT_NAME, 12)).grid(column=1, row=2)
 
-#Email/Username entry
+# Email/Username entry
 user_name_entry = Entry(width=46)
-user_name_entry.grid(column=2,row=2,columnspan=2)
-user_name_entry.insert(END, string="@gmail.com")
+user_name_entry.grid(column=2, row=2, columnspan=2)
+user_name_entry.insert(END, "@gmail.com")
 
-#Password Label
-Label(text="Password:",font=(FONT_NAME,12)).grid(column=1,row=3)
+# Password Label
+Label(text="Password:", font=(FONT_NAME, 12)).grid(column=1, row=3)
 
-#Password Entry
+# Password Entry
 password_entry = Entry(width=28)
-password_entry.grid(column=2,row=3,columnspan=1)
+password_entry.grid(column=2, row=3, columnspan=1)
 
-#Generate Password Button
-generatePassword_btn = Button(text="Generate Password",command=password_generator)
+# Generate Password Button
+generatePassword_btn = Button(text="Generate Password", command=password_generator)
 generatePassword_btn.config(width=14)
-generatePassword_btn.grid(column=3,row=3,)
+generatePassword_btn.grid(column=3, row=3)
 
-#Add Button
-add_btn = Button(text="Add",bg="lightblue",width=46,command=save_password)
-add_btn.grid(column=2,row=4,columnspan=2)
+# Add Button
+add_btn = Button(text="Add", bg="lightblue", width=46, command=save_password)
+add_btn.grid(column=2, row=4, columnspan=2)
 
 root.mainloop()
