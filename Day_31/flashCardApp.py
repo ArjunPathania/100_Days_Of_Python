@@ -7,10 +7,14 @@ import random
 BACKGROUND_COLOR = "#B1DDC6"
 FONT_NAME = "Ariel"
 
+try:
+    df = pd.read_csv("Data/fr_to_en_data/words_to_learn.csv")
+except FileNotFoundError:
+    df = pd.read_csv("Data/fr_to_en_data/translated_fr_to_en_dict.csv")
 
-df = pd.read_csv("Data/fr_to_en_data/translated_fr_to_en_dict.csv")
 to_learn = df.to_dict(orient="records")
 current_car = {}
+
 #-----------------------------------------------------------------FLASHING MECHANISM-------------------------------------------------------------------------#
 
 def next_card():
@@ -42,9 +46,8 @@ def flash_card():
 
 def is_known():
     to_learn.remove(current_car)
-    print(len(to_learn))
     words_to_learn = pd.DataFrame(to_learn)
-    words_to_learn.to_csv("Data/fr_to_en_data/words_to_learn.csv")
+    words_to_learn.to_csv("Data/fr_to_en_data/words_to_learn.csv",index=False)
     next_card()
 
 
