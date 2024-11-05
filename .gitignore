@@ -3,3 +3,4 @@
 __pycache__/
 .env
 Day_32/secrets.json
+Day_32/birthdays.csv
