@@ -3,4 +3,5 @@
 __pycache__/
 .env
 Day_32/secrets.json
-birthdays.csv
+# .gitignore
+Day_32/birthdays.csv
