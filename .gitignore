@@ -1,3 +1,6 @@
 .idea/
 *.pyc
 __pycache__/
+.env
+.gitignore
+emailSenderdata.txt
