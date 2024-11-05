@@ -2,5 +2,4 @@
 *.pyc
 __pycache__/
 .env
-.gitignore
-emailSenderdata.txt
+Day_32/secrets.json
