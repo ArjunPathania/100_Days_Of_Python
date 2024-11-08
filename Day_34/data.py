@@ -5,7 +5,7 @@ from random import randint
 class QuestionBank:
     def __init__(self, amount=10, category=None, difficulty="easy", question_type="boolean"):
         # Initialize default values and API request parameters
-        self.category = category if category else randint(19, 32)
+        self.category = category if category else randint(9, 32)
         self.parameters = {
             "amount": amount,
             "category": self.category,
