@@ -12,7 +12,7 @@ weather_parameters = {
     "appid":api_key,
     "cnt":4
 }
-account_sid = "AC130eccab7266f7ffafbc53812da14959"
+account_sid =  os.environ.get("ACCOUNT_SID")
 auth_token =   os.environ.get("TWILIO_AUTH_TOKEN")
 
 response = requests.get(url =OWM_endpoint, params=weather_parameters)
