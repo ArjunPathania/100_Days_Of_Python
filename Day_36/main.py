@@ -52,6 +52,7 @@ if stock_exchange_response.status_code == 200:
                 'q': COMPANY_NAME,
                 'from': f'{year}-{month}-{day}',
                 'sortBy': 'relevancy',
+                'language':"en",
                 'apiKey': NEWS_API
             }
 
