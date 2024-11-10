@@ -1,7 +1,7 @@
 .idea/
 *.pyc
 __pycache__/
-.env
+Day_37/.env
 Day_32/secrets.json
 # .gitignore
 Day_32/birthdays.csv
