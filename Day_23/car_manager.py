@@ -25,7 +25,7 @@ class Car(Turtle):
     def reset_if_out_of_bounds(self):
         """Reset car position when it moves out of bounds."""
         if self.xcor() < -SCREEN_WIDTH // 2:
-            self.goto(x=SCREEN_WIDTH // 2, y=self.ycor())
+            self.goto(x=SCREEN_WIDTH // 2, y=randint(-240, 240))
 
 
 class CarManager:
