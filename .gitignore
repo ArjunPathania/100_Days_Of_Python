@@ -6,3 +6,4 @@ Day_38/.env
 Day_32/secrets.json
 # .gitignore
 Day_32/birthdays.csv
+*.env
