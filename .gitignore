@@ -2,6 +2,7 @@
 *.pyc
 __pycache__/
 Day_37/.env
+Day_38/.env
 Day_32/secrets.json
 # .gitignore
 Day_32/birthdays.csv
