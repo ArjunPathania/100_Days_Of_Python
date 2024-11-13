@@ -97,8 +97,8 @@ class FlightSearch:
             "returnDate": to_time.strftime("%Y-%m-%d"),
             "adults": 1,
             "nonStop": "true" if is_direct else "false",
-            "currencyCode": "GBP",
-            "max": "10",  # Limit the number of results to avoid rate limits
+            "currencyCode": "INR",
+            "max": "5",  # Limit the number of results to avoid rate limits
         }
 
         response = requests.get(
