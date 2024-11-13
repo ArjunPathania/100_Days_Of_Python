@@ -1,9 +1,9 @@
 import smtplib
 import os
 from twilio.rest import Client
+from dotenv import load_dotenv,find_dotenv
 
-
-# Using a .env file to retrieve the phone numbers and tokens.
+load_dotenv(find_dotenv())
 
 class NotificationManager:
 
