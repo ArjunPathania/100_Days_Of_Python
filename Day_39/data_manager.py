@@ -3,22 +3,19 @@ import requests
 from requests.auth import HTTPBasicAuth
 from dotenv import load_dotenv, find_dotenv
 
-
 load_dotenv(find_dotenv())
 
-SHEETY_PRICES_ENDPOINT = "https://api.sheety.co/451de0eda03f9d57ba11301bb136f639/flightDeals/prices"
-
+SHEETY_PRICES_ENDPOINT = os.environ["SHEETY_PRICES_ENDPOINT"]
 
 class DataManager:
-
     def __init__(self):
-        self._user = os.environ["SHEETY_USRERNAME"]
+        self._user = os.environ["SHEETY_USERNAME"]
         self._password = os.environ["SHEETY_PASSWORD"]
         self._authorization = HTTPBasicAuth(self._user, self._password)
         self.destination_data = {}
 
     def get_destination_data(self):
-        response = requests.get(url=SHEETY_PRICES_ENDPOINT,auth=self._authorization)
+        response = requests.get(url=SHEETY_PRICES_ENDPOINT, auth=self._authorization)
         data = response.json()
         self.destination_data = data["prices"]
         return self.destination_data

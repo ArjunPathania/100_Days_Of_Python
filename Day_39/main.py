@@ -1,66 +1,47 @@
 import time
-from datetime import datetime, timedelta
 from data_manager import DataManager
 from flight_search import FlightSearch
-from flight_data import find_cheapest_flight
 from notification_manager import NotificationManager
+from flight_data import find_cheapest_flight  # Import FlightData and find_cheapest_flight
 
-# ==================== Set up the Flight Search ====================
-
+# Initialize objects
 data_manager = DataManager()
 sheet_data = data_manager.get_destination_data()
-flight_search = FlightSearch()
+flight_search = FlightSearch()  # No need to pass token, it's handled in the class
 notification_manager = NotificationManager()
 
-# Set your origin airport
 ORIGIN_CITY_IATA = "DEL"
 
-
-
-# ==================== Update the Airport Codes in Google Sheet ====================
-
+# Update destination data with IATA codes
 for row in sheet_data:
     if row["iataCode"] == "":
         row["iataCode"] = flight_search.get_destination_code(row["city"])
-        # slowing down requests to avoid rate limit
         time.sleep(2)
-print(f"sheet_data:\n {sheet_data}")
 
 data_manager.destination_data = sheet_data
 data_manager.update_destination_codes()
 
-# if sheet_data[0]["iataCode"] == "TESTING":
-#     for row in sheet_data:
-#         row["iataCode"] = flight_search.get_destination_code(row["city"])
-#     print(f"sheet_data:\n {sheet_data}")
-#     data_manager.destination_data = sheet_data
-#     data_manager.update_destination_codes()
-
-
-
-# ==================== Search for Flights ====================
-
-tomorrow = datetime.now() + timedelta(days=1)
-six_month_from_today = datetime.now() + timedelta(days=(6 * 30))
-
+# Find and notify for the cheapest flight to each destination
 for destination in sheet_data:
     print(f"Getting flights for {destination['city']}...")
-    flights = flight_search.check_flights(
+    flights_data = flight_search.find_cheapest_flight_in_next_month(
         ORIGIN_CITY_IATA,
-        destination["iataCode"],
-        from_time=tomorrow,
-        to_time=six_month_from_today
+        destination["iataCode"]
     )
-    cheapest_flight = find_cheapest_flight(flights)
-    print(f"{destination['city']}: £{cheapest_flight.price}")
-    # Slowing down requests to avoid rate limit
-    time.sleep(2)
-    if cheapest_flight.price != "N/A" and cheapest_flight.price < destination["lowestPrice"]:
-        print(f"Lower price flight found to {destination['city']}!")
-        notification_manager.send_sms(
-            message_body=f"Low price alert! Only £{cheapest_flight.price} to fly "
-                         f"from {cheapest_flight.origin_airport} to {cheapest_flight.destination_airport}, "
-                         f"on {cheapest_flight.out_date} until {cheapest_flight.return_date}."
-        )
 
+    if flights_data:
+        # Pass the retrieved flights data to find the cheapest flight
+        cheapest_flight = find_cheapest_flight(flights_data)
 
+        if cheapest_flight and cheapest_flight.price != "N/A":
+            print(f"{destination['city']}: £{cheapest_flight.price}")
+            time.sleep(2)
+
+            # If a lower price is found, send an SMS notification
+            if cheapest_flight.price < destination["lowestPrice"]:
+                print(f"Lower price flight found to {destination['city']}!")
+                notification_manager.send_sms(
+                    message_body=f"Low price alert! Only £{cheapest_flight.price} to fly from "
+                                 f"{cheapest_flight.origin_airport} to {cheapest_flight.destination_airport}, "
+                                 f"from {cheapest_flight.out_date} to {cheapest_flight.return_date}."
+                )
