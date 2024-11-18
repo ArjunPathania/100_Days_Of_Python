@@ -17,10 +17,8 @@ class DataManager:
         self.customer_data = {}
 
     def get_destination_data(self):
-
         response = requests.get(url=self.prices_endpoint)
         data = response.json()
-
         self.destination_data = data["prices"]
         return self.destination_data
 
