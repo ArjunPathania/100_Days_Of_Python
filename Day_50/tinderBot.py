@@ -96,13 +96,13 @@ try:
 
     # Step 1: Click Login button
     click_element(wait,
-                  (By.XPATH, '//*[@id="q807713831"]/div/div[1]/div/main/div[1]/div/div/div/div/div/header/div/div[2]/div[2]/a/div[2]/div[2]/div'),
+                  (By.XPATH, '//*[@id="q-996314168"]/div/div[1]/div/main/div[1]/div/div/div/div/div/header/div/div[2]/div[2]/a/div[2]/div[2]/div'),
                   "Login button")
 
     # Step 2: Handle Facebook Login
     try:
         facebook_login = click_element(wait,
-                                       (By.XPATH, '//*[@id="q-920667245"]/div/div[1]/div/div[1]/div/div/div[2]/div[2]/span/div[2]/button/div[2]/div[2]'),
+                                       (By.XPATH, '//*[@id="q1570272052"]/div/div[1]/div/div[1]/div/div/div[2]/div[2]/span/div[2]/button/div[2]/div[2]/div[2]/div/div'),
                                        "Facebook login button")
         if not facebook_login:
             logging.info("Facebook login not directly visible. Clicking 'More Options'.")
