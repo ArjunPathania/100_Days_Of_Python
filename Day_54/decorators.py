@@ -71,4 +71,3 @@ def say_greeting():
     print("How are you?")
 decorated_function = delay_decorator(say_greeting)
 decorated_function()
-
