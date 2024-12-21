@@ -6,8 +6,9 @@ from dotenv import load_dotenv,find_dotenv
 
 load_dotenv(find_dotenv())
 
-EMAIL = os.environ["EMAIL"]
+FROM_EMAIL = os.environ["FROM_EMAIL"]
 PASSWORD = os.environ["PASSWORD"]
+TO_EMAIL = os.environ["TO_EMAIL"]
 app = Flask(__name__)
 
 posts  = requests.get(url='https://api.npoint.io/447af222d6804d293c72').json()
@@ -40,10 +41,10 @@ def contact():
 
 def send_email(name, email, phone, message):
     email_message = f"Subject:New Message\n\nName: {name}\nEmail: {email}\nPhone: {phone}\nMessage:{message}"
-    with smtplib.SMTP("smtp.gmail.com") as connection:
+    with smtplib.SMTP("smtp.gmail.com",587) as connection:
         connection.starttls()
-        connection.login(EMAIL, PASSWORD)
-        connection.sendmail(EMAIL, EMAIL, email_message)
+        connection.login(FROM_EMAIL, PASSWORD)
+        connection.sendmail(FROM_EMAIL,TO_EMAIL, email_message)
 
 if __name__ =='__main__':
     app.run(debug=True)
