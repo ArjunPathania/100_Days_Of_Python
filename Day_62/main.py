@@ -14,7 +14,7 @@ Bootstrap5(app)
 
 class CafeForm(FlaskForm):
     cafe = StringField(label='Cafe Name', validators=[DataRequired()])
-    location = URLField(label='Location URL', validators=[DataRequired(), URL()])
+    location = URLField(label='Cafe Location on Google Maps (URL)', validators=[DataRequired(), URL()])
     open_time = StringField(label='Opening Time e.g. 8 PM',  validators=[DataRequired()])
     closing_time = StringField(label='Closing Time e.g. 10 PM', validators=[DataRequired()])
     coffee_rating = SelectField(
