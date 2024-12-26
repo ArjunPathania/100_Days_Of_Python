@@ -63,7 +63,7 @@ def home():
     return render_template("index.html", movies=all_movies)
 
 @app.route("/edit/<int:id>",methods=["GET","POST"])
-def edit_rating(id):
+def rate_movie(id):
     rating_form = RatingUpdate()
     if rating_form.validate_on_submit():
         movie_id = id
@@ -121,7 +121,7 @@ def find_movie():
         )
         db.session.add(new_movie)
         db.session.commit()
-        return redirect(url_for("home"))
+        return redirect(url_for("rate_movie", id=new_movie.id))
 
 
 if __name__ == '__main__':
