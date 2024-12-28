@@ -255,8 +255,6 @@ def about():
 def contact():
     """Handle contact form submissions."""
     form = ContactForm()
-    msg_sent = False  # Default state
-
     if form.validate_on_submit():
         send_email(
             name=form.name.data,
@@ -264,10 +262,10 @@ def contact():
             phone=form.phone.data,
             message=form.message.data
         )
-        msg_sent = True  # Set flag when email is sent
-        return render_template("contact.html", form=form, current_user=current_user, msg_sent=msg_sent)
+        flash("Message sent successfully!", "success")
+        return render_template("contact.html", form=form, current_user=current_user, msg_sent=True)
 
-    return render_template("contact.html", form=form, current_user=current_user, msg_sent=msg_sent)
+    return render_template("contact.html", form=form, current_user=current_user, msg_sent=False)
 
 
 def send_email(name, email, phone, message):
