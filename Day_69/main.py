@@ -144,7 +144,6 @@ def register():
         db.session.add(new_user)
         db.session.commit()
         login_user(new_user)
-        flash("Registration successful!", "success")
         return redirect(url_for('get_all_posts'))
     return render_template("register.html", form=form, current_user=current_user)
 
@@ -168,7 +167,6 @@ def login():
 def logout():
     """Log the user out."""
     logout_user()
-    flash("You have been logged out successfully.", "info")
     return redirect(url_for('get_all_posts'))
 
 @app.route('/post/<int:post_id>', methods=["GET", "POST"])
@@ -187,7 +185,6 @@ def show_post(post_id):
         new_comment = Comment(text=sanitized_text, comment_author=current_user, parent_post=post)
         db.session.add(new_comment)
         db.session.commit()
-        flash("Comment added successfully!", "success")
         return render_template("post.html", post=post, form=form, current_user=current_user, comments=comments)
     return render_template("post.html", post=post, form=form, current_user=current_user,comments = comments)
 
@@ -212,7 +209,6 @@ def add_new_post():
         )
         db.session.add(new_post)
         db.session.commit()
-        flash("New post added successfully!", "success")
         return redirect(url_for('get_all_posts'))
     return render_template("make-post.html", form=form, current_user=current_user)
 
@@ -237,7 +233,6 @@ def edit_post(post_id):
             attributes={'a': ['href']}
         )
         db.session.commit()
-        flash("Post updated successfully!", "success")
         return redirect(url_for('show_post', post_id=post.id))
     return render_template("make-post.html", form=form, is_edit=True, current_user=current_user)
 
@@ -248,7 +243,6 @@ def delete_post(post_id):
     post = db.get_or_404(BlogPost, post_id)
     db.session.delete(post)
     db.session.commit()
-    flash("Post deleted successfully!", "success")
     return redirect(url_for('get_all_posts'))
 
 @app.route('/about')
@@ -256,10 +250,13 @@ def about():
     """Render the about page."""
     return render_template("about.html", current_user=current_user)
 
+
 @app.route('/contact', methods=["GET", "POST"])
 def contact():
     """Handle contact form submissions."""
     form = ContactForm()
+    msg_sent = False  # Default state
+
     if form.validate_on_submit():
         send_email(
             name=form.name.data,
@@ -267,20 +264,20 @@ def contact():
             phone=form.phone.data,
             message=form.message.data
         )
-        flash("Message sent successfully!", "success")
-        return redirect(url_for('contact'))
-    return render_template("contact.html", form=form, current_user=current_user)
+        msg_sent = True  # Set flag when email is sent
+        return render_template("contact.html", form=form, current_user=current_user, msg_sent=msg_sent)
+
+    return render_template("contact.html", form=form, current_user=current_user, msg_sent=msg_sent)
+
 
 def send_email(name, email, phone, message):
     """Send an email with contact form details."""
     email_message = f"Subject: New Message\n\nName: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}"
-    try:
-        with smtplib.SMTP("smtp.gmail.com", 587) as connection:
-            connection.starttls()
-            connection.login(FROM_EMAIL, PASSWORD)
-            connection.sendmail(FROM_EMAIL, TO_EMAIL, email_message)
-    except Exception as e:
-        flash("Failed to send the message. Please try again.", "danger")
+    with smtplib.SMTP("smtp.gmail.com", 587) as connection:
+        connection.starttls()
+        connection.login(FROM_EMAIL, PASSWORD)
+        connection.sendmail(FROM_EMAIL, TO_EMAIL, email_message)
+
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5002))
