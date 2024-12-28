@@ -1,17 +1,18 @@
-from bleach import clean
-from flask import Flask, render_template, redirect, url_for, flash, jsonify, request
-from flask_bootstrap import Bootstrap5
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy import Integer, String, Text
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField ,TextAreaField
-from wtforms.validators import DataRequired, URL ,Email,Length
-from markupsafe import Markup #
-import smtplib , os
-from dotenv import load_dotenv,find_dotenv
-from flask_ckeditor import CKEditor,CKEditorField
+import os
+import smtplib
 from datetime import date
+from bleach import clean
+from dotenv import load_dotenv, find_dotenv
+from flask import Flask, render_template, redirect, url_for, flash, jsonify
+from markupsafe import Markup
+from flask_bootstrap import Bootstrap5
+from flask_ckeditor import CKEditor, CKEditorField
+from flask_sqlalchemy import SQLAlchemy
+from flask_wtf import FlaskForm
+from sqlalchemy import Integer, String, Text
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from wtforms import StringField, SubmitField, TextAreaField
+from wtforms.validators import DataRequired, URL, Email, Length
 
 load_dotenv(find_dotenv())
 
