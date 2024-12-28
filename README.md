@@ -63,19 +63,19 @@ Ensure Python 3.x is installed on your system. You can download it [here](https:
 
 ### Clone the Repository
 ```bash
-git clone https://github.com/your-username/100-days-of-python.git
-cd 100-days-of-python
+git clone https://github.com/your-username/100_Days_Of_Python.git
+cd 100_ays_Of_Python
 ```
 
-### Install Dependencies
+### Install Dependencies (only for specific projects install requirements as you go)
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt 
 ```
 
-### Run Python Scripts
+### Run Python Scripts (only an example)
 Navigate to any day's folder and run the script.
 ```bash
-python main.py
+python main.py 
 ```
 
 ---
@@ -88,11 +88,11 @@ python main.py
 ---
 
 ## 📈 Progress Tracker
-- [ ] Day 1 - 10: Basics of Python
-- [ ] Day 11 - 20: Intermediate Python
-- [ ] Day 21 - 40: Data Structures and Algorithms
-- [ ] Day 41 - 60: Libraries for Data Science
-- [ ] Day 61 - 80: Data Analysis and Visualization
+- [✅] Day 1 - 10: Basics of Python
+- [✅] Day 11 - 20: Intermediate Python
+- [✅] Day 21 - 40: Data Structures and Algorithms
+- [✅] Day 41 - 60: Libraries for Data Science
+- [In-Progress] Day 61 - 80: Data Analysis and Visualization
 - [ ] Day 81 - 100: Final Project
 
 ---
@@ -104,15 +104,7 @@ Suggestions and improvements are welcome! Feel free to open an issue or submit a
 
 ## 💬 Contact
 For queries or collaboration, reach out via:
-- **Email:** your-email@example.com
-- **LinkedIn:** [Your LinkedIn Profile](https://linkedin.com/in/your-profile)
-
+- **Email:** arjunpathania786f@gmail.com
 ---
-
-## 📜 License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
 Happy Coding! 🎉
 
