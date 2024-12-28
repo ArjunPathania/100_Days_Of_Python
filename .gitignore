@@ -1,0 +1,152 @@
+# General OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+bower_components/
+
+# Compiled files
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Java
+*.jar
+*.war
+*.ear
+
+# C/C++
+*.obj
+*.out
+*.app
+
+# Rust
+/target/
+
+# Go
+/bin/
+
+# Ruby
+*.gem
+
+# PHP
+vendor/
+
+# JavaScript/TypeScript
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.*
+
+# IDE files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# MacOS
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Generated files
+*.swp
+*.bak
+*.tmp
+*.orig
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build directories
+dist/
+build/
+.tmp/
+
+# Coverage files
+coverage/
+*.lcov
+
+# Test files
+.nyc_output/
+
+# Configuration
+config/settings_local.py
+config/settings_local.yaml
+
+# Miscellaneous
+*.iml
+*.ipr
+*.iws
+*.bak
+*.tmp
+
+# Terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# Ansible
+*.retry
+
+# Data files
+*.csv
+*.tsv
+*.sqlite
+*.sqlite3
+*.db
+
+# Images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Ignore any other temporary files
+*$~
