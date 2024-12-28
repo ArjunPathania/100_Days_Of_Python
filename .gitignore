@@ -150,3 +150,6 @@ config/settings_local.yaml
 
 # Ignore any other temporary files
 *$~
+
+Day_32/secrets.json
+Day_46/token.txt
