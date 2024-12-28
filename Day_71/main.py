@@ -25,13 +25,13 @@ TO_EMAIL = os.environ["TO_EMAIL"]
 
 # Initialize Flask application
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blogs.db'
+app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['SQLALCHEMY_DATABASE_URI']
 
 # Flask extensions setup
 ckeditor = CKEditor(app)
-app.config['CKEDITOR_SERVE_LOCAL'] = True
-app.config['CKEDITOR_PKG_TYPE'] = 'standard'
+app.config['CKEDITOR_SERVE_LOCAL'] = os.environ['CKEDITOR_SERVE_LOCAL']
+app.config['CKEDITOR_PKG_TYPE'] = os.environ['CKEDITOR_PKG_TYPE']
 Bootstrap5(app)
 gravatar = Gravatar(app,
                     size=100,
