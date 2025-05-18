@@ -1,0 +1,295 @@
+/* ---------- Comic Panel ---------- */
+.comic-panel {
+  border: 4px solid #000;
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: #fff;
+  box-shadow: 4px 4px 0 #000;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* ---------- Speech Bubble ---------- */
+.speech-bubble {
+  position: relative;
+  background: #fff;
+  border: 3px solid #000;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 30px;
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: #fff transparent transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+}
+
+.speech-bubble::before {
+  content: "";
+  position: absolute;
+  bottom: -23px;
+  left: 28px;
+  border-width: 11px 11px 0;
+  border-style: solid;
+  border-color: #000 transparent transparent;
+  display: block;
+  width: 0;
+  z-index: 0;
+}
+
+/* Smaller speech bubble variant */
+.speech-bubble-sm {
+  border: 3px solid #000;
+  border-radius: 8px;
+  box-shadow: 2px 2px 0 #000;
+  background-color: #f3f4f6;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+/* ---------- Comic Dot ---------- */
+.comic-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  border: 2px solid #000;
+  background-color: #f6db35;
+}
+
+/* ---------- Pop-in Animation ---------- */
+@keyframes pop {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+
+  80% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-pop {
+  animation: pop 0.5s ease-out both;
+}
+
+/* ---------- Nav Link Styling ---------- */
+.nav-link {
+  font-family: 'Bangers', cursive;
+  font-size: 1.25rem;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  background-color: #4c69f6;
+  border: 3px solid #000;
+  border-radius: 8px;
+  text-shadow: 2px 2px 0 #000;
+  transition: all 0.3s ease;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-link:hover {
+  background-color: #f6db35;
+  color: #000;
+  text-shadow: none;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+/* ---------- Mission Cards (Projects) ---------- */
+.mission-card .image-container {
+  height: 20rem; /* You can adjust this */
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mission-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0 #000;
+  z-index: 10;
+}
+
+.mission-header {
+  background-color: #4c94f6;
+  color: white;
+  padding: 0.75rem 1rem;
+  border-bottom: 4px solid #000;
+  font-family: 'Bangers', cursive;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.mission-card img,
+.project-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-bottom: 4px solid #000;
+  border-radius: 0 0 12px 12px;
+  display: block;
+}
+
+  
+.mission-card span {
+  background-color: #ffc510;
+  color: #000;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  border: 2px solid #000;
+  display: inline-block;
+}
+
+/* ---------- Skill Panels ---------- */
+.skill-panel {
+  border: 4px solid #000;
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: #fff;
+  box-shadow: 6px 6px 0 #000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.skill-panel:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0 #000;
+  z-index: 10;
+}
+
+.skill-panel h3 {
+  font-family: 'Bangers', cursive;
+  font-size: 1.5rem;
+  color: #ee5454;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 0 #000;
+  text-align: center;
+}
+
+.skill-panel ul {
+  list-style: disc inside;
+  font-weight: bold;
+  color: #000;
+  padding-left: 0;
+  margin: 0;
+}
+
+/* ---------- Centering for headings and paragraphs in skills section ---------- */
+#skills h2,
+#skills p {
+  text-align: center;
+  font-family: 'Bangers', cursive;
+  color: #4c69f6;
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background-color: #4c69f6;
+  color: white;
+  padding: 1rem 0;
+  border-top: 4px solid #000;
+  text-align: center;
+  font-family: 'Bangers', cursive;
+  box-shadow: inset 0 4px 0 #000;
+}
+
+/* ---------- Comic buttons ---------- */
+button,
+input[type="submit"] {
+  font-family: 'Bangers', cursive;
+  font-size: 1.25rem;
+  background-color: #ee5454;
+  color: white;
+  border: 2px solid #000;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 #000;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #a90f13;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+}
+
+/* ---------- Utility ---------- */
+.text-center {
+  text-align: center;
+}
+
+/* Base styles for panels */
+.comic-panel,
+.mission-card,
+.skill-panel {
+  border: 4px solid #000;
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: #fff;
+  box-shadow: 4px 4px 0 #000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.comic-panel:hover,
+.mission-card:hover,
+.skill-panel:hover {
+  transform: translate(-6px, -6px);
+  box-shadow: 8px 8px 0 #000;
+  cursor: pointer;
+}
+
+/* Pop-in Animation */
+@keyframes pop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-pop {
+  animation: pop 0.6s ease-out forwards;
+}
+
+/* Body and text */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f9fafb;
+  color: #111827;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #1f2937;
+}
+
+p {
+  color: #4b5563;
+}

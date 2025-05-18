@@ -1,0 +1,39 @@
+[
+  {
+    "title": "House Price Prediction Model ",
+    "description": "Analyzed Chicago housing data with detailed visualizations to uncover market trends and key price drivers. Built and compared multiple regression models, delivering an accurate price prediction tool. The project is fully documented in an interactive Jupyter notebook.",
+    "technologies": [
+      "Python",
+      "Scikit-Learn",
+      "Pandas",
+      "Matplotlib"
+    ],
+    "image": "assets/img/house_price_prediction.webp",
+    "github_url": "https://github.com/ArjunPathania/100_Days_Of_Python/tree/master/Day_81",
+    "sound_effect": "ZING!"
+  },
+  {
+    "title": "Customer Segmentation",
+    "description": "Used clustering techniques to group customers based on purchasing behavior and demographics. Enabled personalized marketing, enhanced customer experience, and increased overall business efficiency.",
+    "technologies": [
+      "Python",
+      "Scikit-Learn",
+      "Matplotlib"
+    ],
+    "image": "assets/img/customer_segmentation.webp",
+    "github_url": "https://github.com/yourusername/customer-segmentation",
+    "sound_effect": "BAM!"
+  },
+  {
+    "title": "Churn Analysis",
+    "description": "Analyzed customer behavior patterns to identify factors leading to churn. Built predictive models to proactively retain at-risk customers, improving retention strategies and business decision-making.",
+    "technologies": [
+      "Python",
+      "XGBoost",
+      "Seaborn"
+    ],
+    "image": "assets/img/churn_analysis.webp",
+    "github_url": "https://github.com/yourusername/churn-analysis",
+    "sound_effect": "WHAM!"
+  }
+]

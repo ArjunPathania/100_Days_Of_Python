@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<meta name="description" content="My developer portfolio showcasing Python, Flask, and ML projects.">
+<meta property="og:image" content="/static/assets/img/sales_predictor.webp">
+
+
+<!-- Hero Section -->
+<section class="hero bg-comic-blue text-white py-12 mb-10 border-4 border-black rounded-lg shadow-comic">
+  <div class="container text-center">
+    <h1 class="text-5xl md:text-6xl font-bangers mb-4" style="text-shadow: 4px 4px 0 #000;"> DATA HERO</h1>
+    <p class="text-xl md:text-2xl font-bold mb-6 text-comic-yellow" style="text-shadow: 2px 2px 0 #000;">POWERED BY DATA
+    </p>
+    <div class="flex justify-center gap-4">
+      <span class="comic-dot bg-comic-yellow"></span>
+      <span class="comic-dot bg-comic-yellow"></span>
+      <span class="text-4xl font-bangers text-comic-red" style="text-shadow: 2px 2px 0 #000;">POW!</span>
+      <span class="comic-dot bg-comic-yellow"></span>
+      <span class="comic-dot bg-comic-yellow"></span>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="mb-16">
+  <h2 class="text-3xl font-bangers mb-6 text-center text-comic-blue" style="text-shadow: 2px 2px 0 #000;">ORIGIN STORY
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="comic-panel animate-pop">
+      <img src="{{ url_for('static', filename='assets/img/profile.png') }}" alt="Data Hero Profile"
+        class="rounded-full w-52 h-52 object-cover border-4 border-black mx-auto mb-4 shadow-comic-image">
+      <p class="text-center font-bold">A humble analyst by day...</p>
+    </div>
+    <div class="comic-panel animate-pop">
+      <div class="speech-bubble">
+        <p class="text-xl md:text-2xl font-bold mb-6 text-comic-yellow" style="text-shadow: 2px 2px 0 #000;">
+          When chaos calls, <strong>Data Hero</strong> rises!
+          I wrangle wild data, cast powerful Python spells, and predict the unpredictable with lightning-fast models!
+          From messy datasets to crystal-clear insights — I battle the chaos one algorithm at a time!
+        </p>
+      </div>
+      <div class="text-center mt-4">
+        <span class="text-4xl font-bangers text-comic-red" style="text-shadow: 2px 2px 0 #000;">WHOOSH!</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="my-12 mx-4 p-6">
+  <div class="speech-bubble mb-8 text-center ">
+    <h2 class="text-3xl md:text-4xl font-bangers text-comic-blue mb-4" style="text-shadow: 2px 2px 0 #000;">MY SKILLS
+    </h2>
+    <p class="text-xl md:text-2xl font-bold text-comic-yellow" style="text-shadow: 2px 2px 0 #000;">
+      I battle chaos from raw data to real-world impact — with tools forged for every stage of the Data Science and AI
+      pipeline, powered by solid math!
+    </p>
+  </div>
+
+  <div class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <div class=" comic-panel animate-pop p-6 shadow-comic-image border-4 border-black">
+      <h3 class="text-center text-lg font-bangers text-comic-red mb-4">CODE SPELLS</h3>
+      <ul class="list-disc list-inside font-bold text-black">
+        <li>Python</li>
+        <li>Flask</li>
+        <li>C/C++</li>
+      </ul>
+    </div>
+
+    <div class="comic-panel animate-pop p-6 shadow-comic-image border-4 border-black">
+      <h3 class="text-center text-lg font-bangers text-comic-red mb-4">DATA POTIONS</h3>
+      <ul class="list-disc list-inside font-bold text-black">
+        <li>Pandas</li>
+        <li>NumPy</li>
+        <li>Jupyter</li>
+      </ul>
+    </div>
+
+    <div class="comic-panel animate-pop p-6 shadow-comic-image border-4 border-black">
+      <h3 class="text-center text-lg font-bangers text-comic-red mb-4">VISUALIZATION BLAST</h3>
+      <ul class="list-disc list-inside font-bold text-black">
+        <li>Matplotlib</li>
+        <li>Seaborn</li>
+        <li>Plotly</li>
+      </ul>
+    </div>
+
+    <div class="comic-panel animate-pop p-6 shadow-comic-image border-4 border-black">
+      <h3 class="text-center text-lg font-bangers text-comic-red mb-4">ML ENGINE</h3>
+      <ul class="list-disc list-inside font-bold text-black">
+        <li>Scikit-Learn</li>
+        <li>TensorFlow</li>
+        <li>PyTorch</li>
+      </ul>
+    </div>
+  </div>
+  <div class="text-center mt-10">
+    <span class="text-4xl font-bangers text-comic-red" style="text-shadow: 2px 2px 0 #000;">KA-POW!</span>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="mb-16">
+  <h2 class="text-3xl font-bangers mb-6 text-center text-comic-blue" style="text-shadow: 2px 2px 0 #000;">HEROIC
+    MISSIONS</h2>
+  <h2 class="text-xl md:text-2xl font-bold mb-6 text-comic-yellow text-center" style="text-shadow: 2px 2px 0 #000;">
+    THESE MISSIONS SAVED WORLDS FROM MESSY DATA!
+  </h2>
+
+
+  <section>
+   
+    <div class="space-y-10">
+      {% for project in projects %}
+      <div class="grid md:grid-cols-2 items-center gap-6 comic-panel animate-pop">
+        {% if loop.index is divisibleby 2 %}
+        <!-- Even index: Content on left, image on right on desktop -->
+        <div class="order-1 md:order-2">
+          <img src="{{ url_for('static', filename=project.image) }}" alt="{{ project.title }}"
+            class="w-full h-56 object-cover rounded shadow-comic-image border-4 border-black">
+        </div>
+        <div class="order-2 md:order-1">
+          {% else %}
+          <!-- Odd index: Image on left, content on right -->
+          <div class="order-1">
+            <img src="{{ url_for('static', filename=project.image) }}" alt="{{ project.title }}"
+              class="w-full h-56 object-cover rounded shadow-comic-image border-4 border-black">
+          </div>
+          <div class="order-2">
+            {% endif %}
+            <div class="mission-header text-xl text-center mb-2">{{ project.title }}</div>
+            <div class="speech-bubble-sm bg-white p-4 mb-4 border-2 border-black">
+              <p class="text-gray-800">{{ project.description }}</p>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-3">
+              {% for tech in project.technologies %}
+              <span class="bg-comic-yellow text-black px-3 py-1 rounded-full text-xs font-bold border-2 border-black">{{
+                tech }}</span>
+              {% endfor %}
+            </div>
+            <div class="text-right">
+              <span class="text-2xl font-bangers text-comic-red" style="text-shadow: 1px 1px 0 #000;">{{
+                project.sound_effect }}</span>
+              {% if project.github_url %}
+              <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer"
+                class="text-comic-blue hover:text-comic-red transition-colors" title="View on GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12a12 12 0 0 0 8.205 11.385c.6.11.82-.26.82-.58 0-.29-.01-1.04-.015-2.05-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.746.083-.73.083-.73 1.205.085 1.838 1.238 1.838 1.238 1.07 1.835 2.807 1.305 3.492.997.107-.776.42-1.305.763-1.605-2.665-.3-5.466-1.335-5.466-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.48 11.48 0 0 1 3-.403c1.02.005 2.045.138 3 .404 2.29-1.553 3.296-1.23 3.296-1.23.655 1.653.243 2.873.12 3.176.77.84 1.234 1.91 1.234 3.22 0 4.61-2.807 5.625-5.48 5.92.43.37.823 1.1.823 2.22 0 1.606-.015 2.9-.015 3.29 0 .32.217.7.825.58A12.006 12.006 0 0 0 24 12c0-6.63-5.373-12-12-12z" />
+                </svg>
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Contact Section -->
+      <section id="contact" class="py-32 comic-panel">
+        <h2 class="text-3xl font-bangers mb-6 text-center text-comic-blue" style="text-shadow: 2px 2px 0 #000;">CALL FOR
+          BACKUP</h2>
+        <p class="text-xl md:text-2xl font-bold mb-6 text-comic-yellow text-center "
+          style="text-shadow: 2px 2px 0 #000;">
+          Need help with your data challenges? Send up the Data Signal!</p>
+
+        <div class="max-w-2xl mx-auto">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+          {% for category, message in messages %}
+          <div
+            class="mb-4 p-4 border-2 border-black bg-comic-yellow rounded text-black font-bold text-center shadow-comic">
+            {{ message }}
+          </div>
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
+
+          <form id="contactForm" method="POST" class="bg-white p-6 border-4 border-black rounded-lg">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-4">
+              {{ form.name.label(class="block font-bold mb-2") }}
+              {{ form.name(class="w-full px-4 py-2 border-2 border-black rounded focus:outline-none focus:ring-2
+              focus:ring-comic-blue") }}
+            </div>
+
+            <div class="mb-4">
+              {{ form.email.label(class="block font-bold mb-2") }}
+              {{ form.email(class="w-full px-4 py-2 border-2 border-black rounded focus:outline-none focus:ring-2
+              focus:ring-comic-blue") }}
+            </div>
+
+            <div class="mb-4">
+              {{ form.phone.label(class="block font-bold mb-2") }}
+              {{ form.phone(class="w-full px-4 py-2 border-2 border-black rounded focus:outline-none focus:ring-2
+              focus:ring-comic-blue") }}
+            </div>
+
+            <div class="mb-4">
+              {{ form.message.label(class="block font-bold mb-2") }}
+              {{ form.message(rows=4, class="w-full px-4 py-2 border-2 border-black rounded focus:outline-none
+              focus:ring-2
+              focus:ring-comic-blue") }}
+            </div>
+
+            {{ form.submit(class="w-full bg-comic-red text-white py-3 px-4 rounded-lg font-bangers text-xl border-2
+            border-black hover:bg-red-700 transition-colors") }}
+          </form>
+        </div>
+
+        <div class="flex justify-center mt-8">
+          <span class="text-4xl font-bangers text-comic-red" style="text-shadow: 2px 2px 0 #000;">ZAP!</span>
+        </div>
+      </section>
+
+
+      {% endblock %}
