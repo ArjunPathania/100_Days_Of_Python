@@ -151,7 +151,7 @@ config/settings_local.yaml
 # Ignore any other temporary files
 *$~
 
-*.conda_env/
 
+python100_env
 Day_32/secrets.json
 Day_46/token.txt
